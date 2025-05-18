@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pepsu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Poppins:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #1a237e, #283593, #3949ab);
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        /* Original card styles - kept exactly as provided */
+        .body {
+            position: relative;
+            border: 5px solid black;
+            width: 505px;
+            border-radius: 20px;
+            height: min-content;
+            background-color: rgb(211, 154, 178);
+            z-index: 10;
+        }
+
+        .image {
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .button1 button {
+            margin: 8px;
+            padding: 8px;
+            padding: 7px 9px;
+            border-radius: 50px;
+            font-size: 15px;
+            border: rgb(215, 99, 219);
+            background-color: rgb(214, 118, 218)
+        }
+
+        .button2 {
+            text-align: center
+        }
+
+        .button2 button {
+            font-size: 20px;
+            padding: 10px 10px;
+            border-radius: 20px;
+            margin-top: 7px;
+            border: 2px solid black;
+            font-weight: bold;
+            cursor: pointer;
+            color: rgb(22, 129, 165);
+            background-color: rgb(226, 141, 222);
+        }
+
+        .Quality {
+            font-size: 25px;
+            font-weight: bold;
+            color: rgb(50, 9, 73);
+            text-align: center;
+        }
+
+        /* Background decoration styles */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .bodybuilding-decoration {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .bodybuilding-decoration.dumbbell {
+            width: 120px;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><rect x="20" y="40" width="160" height="20" rx="5" fill="%23333"/><circle cx="20" cy="50" r="20" fill="%23777"/><circle cx="180" cy="50" r="20" fill="%23777"/></svg>');
+        }
+
+        .bodybuilding-decoration.protein {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            opacity: 0.8;
+            z-index: 5;
+        }
+
+        .bodybuilding-decoration.protein:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            opacity: 1;
+        }
+
+        .bodybuilding-decoration.muscle {
+            width: 100px;
+            height: 70px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70"><path d="M30,10 C40,0 60,0 70,10 C85,25 85,45 70,60 C60,70 40,70 30,60 C15,45 15,25 30,10 Z" fill="%23ff6b6b" stroke="%23333" stroke-width="2"/></svg>');
+        }
+
+        /* Balloon styles */
+        .balloons-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            border-radius: 50%;
+            animation: float 20s linear infinite;
+            opacity: 0.8;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .balloon:before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.7);
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-200px) translateX(100px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Cake styles */
+        .cake-container {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .cake-container:hover {
+            transform: scale(1.1);
+        }
+
+        .cake-container.top-left {
+            top: 50px;
+            left: 50px;
+        }
+
+        .cake-container.top-right {
+            top: 50px;
+            right: 50px;
+        }
+
+        .cake-container.bottom-left {
+            bottom: 50px;
+            left: 50px;
+        }
+
+        .cake-container.bottom-right {
+            bottom: 50px;
+            right: 50px;
+        }
+
+        .cake {
+            width: 100%;
+            height: 60%;
+            background: #f9c851;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .cake:before, .cake:after {
+            content: '';
+            position: absolute;
+            background: #f39419;
+            width: 100%;
+            height: 15px;
+        }
+
+        .cake:before {
+            top: 0;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .cake:after {
+            bottom: 20px;
+        }
+
+        .candle {
+            width: 8px;
+            height: 30px;
+            background: linear-gradient(to bottom, #fff, #ebe8e8);
+            position: absolute;
+            bottom: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+
+        .flame {
+            width: 15px;
+            height: 30px;
+            background: radial-gradient(#ffdd44, #ff9900, #ff5500);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            bottom: calc(60% + 30px);
+            left: 50%;
+            transform-origin: bottom;
+            transform: translateX(-50%);
+            animation: flicker 0.6s infinite alternate;
+            box-shadow: 0 0 15px #ff5500, 0 0 20px #ff5500;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(0.9, 1.1);
+            }
+            25% {
+                transform: translateX(-50%) scale(1.1, 0.9);
+            }
+            50% {
+                transform: translateX(-50%) scale(0.95, 1.05);
+            }
+            75% {
+                transform: translateX(-50%) scale(1.05, 0.95);
+            }
+            100% {
+                transform: translateX(-50%) scale(1, 1);
+            }
+        }
+
+        .flying-cake {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            z-index: 101;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .flying-cake .cake {
+            transform: rotate(30deg);
+        }
+
+        /* Overlay for splash effect */
+        .cake-splash {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g fill="%23f9c851"><circle cx="100" cy="100" r="10"/><circle cx="80" cy="90" r="15"/><circle cx="120" cy="85" r="12"/><circle cx="70" cy="110" r="8"/><circle cx="130" cy="105" r="14"/><circle cx="100" cy="120" r="9"/><circle cx="90" cy="130" r="11"/><circle cx="110" cy="125" r="10"/></g></svg>');
+            z-index: 102;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s ease;
+        }
+
+        .pepsu-photos-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .pepsu-photo {
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            opacity: 0.2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: rotate(var(--rotation));
+        }
+
+        .p {
+            padding: 10px;
+        }
+
+        /* Stickman animation styles */
+        .stickman-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .stickman {
+            position: absolute;
+            width: 100px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.8s ease;
+        }
+
+        .stickman-child {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="30" r="20" fill="none" stroke="black" stroke-width="2"/><line x1="50" y1="50" x2="50" y2="120" stroke="black" stroke-width="2"/><line x1="50" y1="70" x2="20" y2="90" stroke="black" stroke-width="2"/><line x1="50" y1="70" x2="80" y2="90" stroke="black" stroke-width="2"/><line x1="50" y1="120" x2="20" y2="170" stroke="black" stroke-width="2"/><line x1="50" y1="120" x2="80" y2="170" stroke="black" stroke-width="2"/><circle cx="43" cy="25" r="3" fill="black"/><circle cx="57" cy="25" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="1.5"/></svg>');
+            background-repeat: no-repeat;
+            position: absolute;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .stickman-muscular {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M45,50 C30,70 30,100 45,120" stroke="black" stroke-width="4" fill="none"/><path d="M55,50 C70,70 70,100 55,120" stroke="black" stroke-width="4" fill="none"/><path d="M30,65 C20,55 10,70 20,80 C30,90 40,75 30,65" stroke="black" stroke-width="4" fill="none"/><path d="M70,65 C80,55 90,70 80,80 C70,90 60,75 70,65" stroke="black" stroke-width="4" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="2"/></svg>');
+            background-repeat: no-repeat;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .protein-shake {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60"><path d="M10,5 L30,5 L32,55 L8,55 Z" fill="%2395dea9" stroke="black" stroke-width="1"/><path d="M5,5 L35,5 L35,10 L5,10 Z" fill="%23e0e0e0" stroke="black" stroke-width="1"/><path d="M15,0 L25,0 L25,5 L15,5 Z" fill="%23e0e0e0" stroke="black" stroke-width="1"/></svg>');
+            left: 30px;
+            top: 80px;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        /* Protein bottle with stickman container */
+        .protein-stickman-container {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            z-index: 5;
+        }
+        
+        .protein-bottle {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M20,20 L80,20 L90,130 L10,130 Z" fill="%23f5f5f5" stroke="%23333" stroke-width="2"/><text x="50" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="%23333">PROTEIN</text></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: 0;
+            top: 40px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .feed-me-text {
+            position: absolute;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 80px;
+            top: 165px;
+            left: 0;
+            opacity: 0.6;
+            font-style: italic;
+        }
+        
+        .protein-bottle:hover {
+            transform: scale(1.1);
+        }
+        
+        .static-stickman {
+            position: absolute;
+            width: 100px;
+            height: 200px;
+            right: 10px;
+            top: 0;
+        }
+        
+        .static-stickman-child {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="30" r="20" fill="none" stroke="black" stroke-width="2"/><line x1="50" y1="50" x2="50" y2="120" stroke="black" stroke-width="2"/><line x1="50" y1="70" x2="20" y2="90" stroke="black" stroke-width="2"/><line x1="50" y1="70" x2="80" y2="90" stroke="black" stroke-width="2"/><line x1="50" y1="120" x2="20" y2="170" stroke="black" stroke-width="2"/><line x1="50" y1="120" x2="80" y2="170" stroke="black" stroke-width="2"/><circle cx="43" cy="25" r="3" fill="black"/><circle cx="57" cy="25" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="1.5"/></svg>');
+            background-repeat: no-repeat;
+            position: absolute;
+            transition: opacity 0.5s ease;
+        }
+        
+        .static-stickman-muscular {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M45,50 C30,70 30,100 45,120" stroke="black" stroke-width="4" fill="none"/><path d="M55,50 C70,70 70,100 55,120" stroke="black" stroke-width="4" fill="none"/><path d="M30,65 C20,55 10,70 20,80 C30,90 40,75 30,65" stroke="black" stroke-width="4" fill="none"/><path d="M70,65 C80,55 90,70 80,80 C70,90 60,75 70,65" stroke="black" stroke-width="4" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="2"/></svg>');
+            background-repeat: no-repeat;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .static-protein-shake {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60"><path d="M10,5 L30,5 L32,55 L8,55 Z" fill="%2395dea9" stroke="black" stroke-width="1"/><path d="M5,5 L35,5 L35,10 L5,10 Z" fill="%23e0e0e0" stroke="black" stroke-width="1"/><path d="M15,0 L25,0 L25,5 L15,5 Z" fill="%23e0e0e0" stroke="black" stroke-width="1"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: 35px;
+            top: 80px;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        @keyframes drink {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes flex {
+            0% { 
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M45,50 C30,70 30,100 45,120" stroke="black" stroke-width="4" fill="none"/><path d="M55,50 C70,70 70,100 55,120" stroke="black" stroke-width="4" fill="none"/><path d="M30,65 C20,55 10,70 20,80 C30,90 40,75 30,65" stroke="black" stroke-width="4" fill="none"/><path d="M70,65 C80,55 90,70 80,80 C70,90 60,75 70,65" stroke="black" stroke-width="4" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="2"/></svg>'); 
+            }
+            25% { 
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M45,50 C25,70 25,90 35,100" stroke="black" stroke-width="4" fill="none"/><path d="M55,50 C75,70 75,90 65,100" stroke="black" stroke-width="4" fill="none"/><path d="M25,65 C15,60 5,75 15,85 C25,95 35,80 25,65" stroke="black" stroke-width="4" fill="none"/><path d="M75,65 C85,60 95,75 85,85 C75,95 65,80 75,65" stroke="black" stroke-width="4" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,30 C45,25 55,25 60,30" fill="none" stroke="black" stroke-width="2"/></svg>'); 
+                transform: scale(1.1);
+            }
+            50% { 
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M35,50 C20,55 15,70 25,90" stroke="black" stroke-width="5" fill="none"/><path d="M65,50 C80,55 85,70 75,90" stroke="black" stroke-width="5" fill="none"/><path d="M25,55 C15,50 5,65 15,80 C25,95 35,75 25,55" stroke="black" stroke-width="5" fill="none"/><path d="M75,55 C85,50 95,65 85,80 C75,95 65,75 75,55" stroke="black" stroke-width="5" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="2"/></svg>'); 
+                transform: scale(1.2);
+            }
+            75% { 
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M30,50 C15,65 15,75 30,90" stroke="black" stroke-width="5" fill="none"/><path d="M70,50 C85,65 85,75 70,90" stroke="black" stroke-width="5" fill="none"/><path d="M15,70 C5,75 5,85 15,90 C25,95 30,80 15,70" stroke="black" stroke-width="5" fill="none"/><path d="M85,70 C95,75 95,85 85,90 C75,95 70,80 85,70" stroke="black" stroke-width="5" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,30 C45,25 55,25 60,30" fill="none" stroke="black" stroke-width="2"/></svg>'); 
+                transform: scale(1.1);
+            }
+            100% { 
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><circle cx="50" cy="25" r="20" fill="none" stroke="black" stroke-width="3"/><path d="M45,50 C30,70 30,100 45,120" stroke="black" stroke-width="4" fill="none"/><path d="M55,50 C70,70 70,100 55,120" stroke="black" stroke-width="4" fill="none"/><path d="M30,65 C20,55 10,70 20,80 C30,90 40,75 30,65" stroke="black" stroke-width="4" fill="none"/><path d="M70,65 C80,55 90,70 80,80 C70,90 60,75 70,65" stroke="black" stroke-width="4" fill="none"/><line x1="45" y1="120" x2="25" y2="170" stroke="black" stroke-width="4"/><line x1="55" y1="120" x2="75" y2="170" stroke="black" stroke-width="4"/><circle cx="43" cy="20" r="3" fill="black"/><circle cx="57" cy="20" r="3" fill="black"/><path d="M40,35 C45,40 55,40 60,35" fill="none" stroke="black" stroke-width="2"/></svg>'); 
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="background-container" id="backgroundContainer"></div>
+    <div class="pepsu-photos-container" id="pepsuPhotosContainer"></div>
+    <div class="balloons-container" id="balloonsContainer"></div>
+    
+    <!-- Protein and stickman containers will be created dynamically -->
+    
+    <!-- Original stickman animation container (keeping for compatibility) -->
+    <div class="stickman-container" id="stickmanContainer">
+        <div class="stickman" id="stickman">
+            <div class="stickman-child" id="stickmanChild"></div>
+            <div class="stickman-muscular" id="stickmanMuscular"></div>
+            <div class="protein-shake" id="proteinShake"></div>
+        </div>
+    </div>
+    
+    <!-- Cakes positioned around the card -->
+    <div class="cake-container top-left" id="cakeTopLeft">
+        <div class="cake"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+    </div>
+    
+    <div class="cake-container top-right" id="cakeTopRight">
+        <div class="cake"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+    </div>
+    
+    <div class="cake-container bottom-left" id="cakeBottomLeft">
+        <div class="cake"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+    </div>
+    
+    <div class="cake-container bottom-right" id="cakeBottomRight">
+        <div class="cake"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+    </div>
+    
+    <!-- Flying cake element (for animation) -->
+    <div class="flying-cake" id="flyingCake">
+        <div class="cake"></div>
+        <div class="candle"></div>
+    </div>
+    
+    <!-- Cake splash overlay -->
+    <div class="cake-splash" id="cakeSplash"></div>
+
+    <!-- Original card content - kept unchanged -->
+    <div class="body">
+        <div class="image">
+            <img src="IMG-20250518-WA0011.jpg" alt="pepsu" height="500px" width="500px">
+        </div>
+        <div class="Quality">
+            Quality of pepsu Bhayy:-
+        </div>
+        <div class="button1">
+            <button type="button">Body building</button>
+            <button type="button">Bkchodi</button>
+            <button type="button">Bhaichara</button>
+            <button type="button">Thodi Aur Bkchodi</button>
+            <button type="button">Technologia Expert</button>
+            <button type="button">Logo ko Darate hai &hearts;</button>
+        </div>
+        <br>
+        <h2>&hearts;&hearts;&hearts;Happy Birthday Pepsu Bhayy &hearts; &hearts; &hearts;</h2>
+        <br>
+        <div class="p">
+            <p>
+                Happy birthday to one of the most amazing person in my life! You are not just my friend, but also my
+                brother.It makes life easy when having such a great friend by your side, thanks for guiding your weak
+                friend when needing help.Baaki bkchodi nhi rukni chaiye &hearts;. I
+                am so grateful to have you in my life. You are a true gem, and I wish you all the happiness and success
+                in the world. May this year bring you everything you have ever wished for. Happy birthday once again!
+            </p>
+        </div>
+        <br>
+        <div class="button2">
+            <button>Lub u brother &#128159</button>
+        </div>
+        <br>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="sadMusic" preload="auto">
+        <source src="data:audio/mpeg;base64,SUQzAwAAAAAAI1RJVDIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWFgAAAAPAAAAEwAAABgAYQB1AGQAaQBvAAAAVEFFTgAAAAEAAABUWFhYAAAAEAAAAP8AYQB1AGQAaQBvAC8AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsQZ/8BAxi0AABMQMjAwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxDL/wAAGkOAAAIBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMRAP8AAAGkAAAABFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
+    </audio>
+    
+    <audio id="happyBirthdayMusic" preload="auto">
+        <source src="data:audio/mpeg;base64,SUQzAwAAAAAAI1RJVDIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWFgAAAAPAAAAEwAAABgAYQB1AGQAaQBvAAAAVEFFTgAAAAEAAABUWFhYAAAAEAAAAP8AYQB1AGQAaQBvAC8AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsQZ/8BAxi0AABMQMjAwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxDL/wAAGkOAAAIBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMRAP8AAAGkAAAABFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
+    </audio>
+    
+    <audio id="popSound" preload="auto">
+        <source src="data:audio/mpeg;base64,SUQzAwAAAAAAI1RJVDIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWFgAAAAPAAAAEwAAABgAYQB1AGQAaQBvAAAAVEFFTgAAAAEAAABUWFhYAAAAEAAAAP8AYQB1AGQAaQBvAC8AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsQZ/8BAxi0AABMQMjAwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxDL/wAAGkOAAAIBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMRAP8AAAGkAAAABFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Play Happy Birthday song (Web Audio API implementation)
+        function playHappyBirthdaySong() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            const notes = [
+                { note: 'G4', duration: 0.25 },
+                { note: 'G4', duration: 0.25 },
+                { note: 'A4', duration: 0.5 },
+                { note: 'G4', duration: 0.5 },
+                { note: 'C5', duration: 0.5 },
+                { note: 'B4', duration: 1 },
+                { note: 'G4', duration: 0.25 },
+                { note: 'G4', duration: 0.25 },
+                { note: 'A4', duration: 0.5 },
+                { note: 'G4', duration: 0.5 },
+                { note: 'D5', duration: 0.5 },
+                { note: 'C5', duration: 1 },
+                { note: 'G4', duration: 0.25 },
+                { note: 'G4', duration: 0.25 },
+                { note: 'G5', duration: 0.5 },
+                { note: 'E5', duration: 0.5 },
+                { note: 'C5', duration: 0.5 },
+                { note: 'B4', duration: 0.5 },
+                { note: 'A4', duration: 0.5 },
+                { note: 'F5', duration: 0.25 },
+                { note: 'F5', duration: 0.25 },
+                { note: 'E5', duration: 0.5 },
+                { note: 'C5', duration: 0.5 },
+                { note: 'D5', duration: 0.5 },
+                { note: 'C5', duration: 1 }
+            ];
+            
+            const frequencies = {
+                'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'G4': 392.00, 'A4': 440.00, 'B4': 493.88,
+                'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46, 'G5': 783.99, 'A5': 880.00, 'B5': 987.77
+            };
+            
+            let time = audioContext.currentTime;
+            
+            notes.forEach(note => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.frequency.value = frequencies[note.note];
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.5, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + note.duration);
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.start(time);
+                oscillator.stop(time + note.duration);
+                
+                time += note.duration;
+            });
+        }
+
+        // Create background decorations
+        function createBodybuildingDecorations() {
+            const container = document.getElementById('backgroundContainer');
+            const types = ['dumbbell', 'muscle'];  // Remove protein from random elements
+            
+            // First create regular decorations
+            for (let i = 0; i < 12; i++) {
+                const element = document.createElement('div');
+                element.classList.add('bodybuilding-decoration');
+                element.classList.add(types[Math.floor(Math.random() * types.length)]);
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.transform = `rotate(${Math.random() * 360}deg)`;
+                container.appendChild(element);
+            }
+            
+            // Now create protein bottles with stickmen
+            createProteinWithStickmen();
+        }
+        
+        // Create protein bottles with stickmen beside them
+        function createProteinWithStickmen() {
+            const positions = [
+                { x: '15%', y: '20%' },
+                { x: '80%', y: '25%' },
+                { x: '20%', y: '70%' },
+                { x: '75%', y: '65%' }
+            ];
+            
+            positions.forEach((pos, index) => {
+                // Create container
+                const container = document.createElement('div');
+                container.classList.add('protein-stickman-container');
+                container.style.left = pos.x;
+                container.style.top = pos.y;
+                
+                // Create protein bottle
+                const bottle = document.createElement('div');
+                bottle.classList.add('protein-bottle');
+                bottle.setAttribute('data-id', index);
+                
+                // Add "Feed me" text
+                const feedMeText = document.createElement('div');
+                feedMeText.classList.add('feed-me-text');
+                feedMeText.textContent = 'Feed me';
+                
+                // Create stickman
+                const stickman = document.createElement('div');
+                stickman.classList.add('static-stickman');
+                
+                // Create child stickman (visible by default)
+                const childStickman = document.createElement('div');
+                childStickman.classList.add('static-stickman-child');
+                childStickman.id = `stickmanChild-${index}`;
+                
+                // Create muscular stickman (hidden by default)
+                const muscularStickman = document.createElement('div');
+                muscularStickman.classList.add('static-stickman-muscular');
+                muscularStickman.id = `stickmanMuscular-${index}`;
+                
+                // Create protein shake (hidden by default)
+                const proteinShake = document.createElement('div');
+                proteinShake.classList.add('static-protein-shake');
+                proteinShake.id = `proteinShake-${index}`;
+                
+                // Add event listener to bottle
+                bottle.addEventListener('click', function() {
+                    startStaticStickmanAnimation(index);
+                });
+                
+                // Assemble components
+                stickman.appendChild(childStickman);
+                stickman.appendChild(muscularStickman);
+                stickman.appendChild(proteinShake);
+                
+                container.appendChild(bottle);
+                container.appendChild(feedMeText);
+                container.appendChild(stickman);
+                
+                document.body.appendChild(container);
+            });
+        }
+        
+        // Animation for static stickman beside protein bottle
+        function startStaticStickmanAnimation(index) {
+            const childStickman = document.getElementById(`stickmanChild-${index}`);
+            const muscularStickman = document.getElementById(`stickmanMuscular-${index}`);
+            const proteinShake = document.getElementById(`proteinShake-${index}`);
+            
+            // Don't start animation if already in progress
+            if (proteinShake.style.opacity === '1' || muscularStickman.style.opacity === '1') {
+                return;
+            }
+            
+            // Animation sequence
+            // Show protein shake
+            proteinShake.style.opacity = '1';
+            
+            // Drink animation
+            setTimeout(() => {
+                proteinShake.style.animation = 'drink 1.5s ease';
+                
+                // After drinking, transform
+                setTimeout(() => {
+                    proteinShake.style.opacity = '0';
+                    childStickman.style.opacity = '0';
+                    
+                    // Grow muscles
+                    setTimeout(() => {
+                        muscularStickman.style.opacity = '1';
+                        
+                        // Flex muscles
+                        setTimeout(() => {
+                            muscularStickman.style.animation = 'flex 1.5s ease 2';
+                            
+                            // Reset after animation
+                            setTimeout(() => {
+                                // Reset for next time
+                                childStickman.style.opacity = '1';
+                                muscularStickman.style.opacity = '0';
+                                proteinShake.style.animation = 'none';
+                                muscularStickman.style.animation = 'none';
+                            }, 4000);
+                        }, 500);
+                    }, 500);
+                }, 1500);
+            }, 500);
+        }
+        
+        // Keeping the old stickman animation function for compatibility
+        function startStickmanAnimation(x, y) {
+            const stickmanContainer = document.getElementById('stickmanContainer');
+            const stickman = document.getElementById('stickman');
+            const stickmanChild = document.getElementById('stickmanChild');
+            const stickmanMuscular = document.getElementById('stickmanMuscular');
+            const proteinShake = document.getElementById('proteinShake');
+            
+            // Position stickman near the clicked protein
+            stickman.style.left = x + 'px';
+            stickman.style.top = y + 'px';
+            stickman.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            
+            // Show stickman container
+            stickmanContainer.style.opacity = '1';
+            stickmanContainer.style.pointerEvents = 'auto';
+            
+            // Animation sequence
+            setTimeout(() => {
+                // Show protein shake
+                proteinShake.style.opacity = '1';
+                
+                // Drink animation
+                setTimeout(() => {
+                    proteinShake.style.animation = 'drink 1.5s ease';
+                    
+                    // After drinking, transform
+                    setTimeout(() => {
+                        proteinShake.style.opacity = '0';
+                        stickmanChild.style.opacity = '0';
+                        
+                        // Grow muscles
+                        setTimeout(() => {
+                            stickmanMuscular.style.opacity = '1';
+                            stickman.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                            
+                            // Flex muscles
+                            setTimeout(() => {
+                                stickmanMuscular.style.animation = 'flex 1s ease 3';
+                                
+                                // Fade out animation
+                                setTimeout(() => {
+                                    stickmanContainer.style.opacity = '0';
+                                    
+                                    // Reset for next time
+                                    setTimeout(() => {
+                                        stickmanContainer.style.pointerEvents = 'none';
+                                        stickman.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                                        stickmanChild.style.opacity = '1';
+                                        stickmanMuscular.style.opacity = '0';
+                                        proteinShake.style.animation = 'none';
+                                        stickmanMuscular.style.animation = 'none';
+                                    }, 500);
+                                }, 4000);
+                            }, 500);
+                        }, 500);
+                    }, 1500);
+                }, 500);
+            }, 500);
+        }
+        
+        // Create balloons
+        function createBalloons() {
+            const balloonsContainer = document.getElementById('balloonsContainer');
+            const colors = ['#FF5252', '#FF4081', '#E040FB', '#7C4DFF', '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'];
+            
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDelay = Math.random() * 10 + 's';
+                balloon.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Add balloon popping functionality
+                balloon.addEventListener('click', function(e) {
+                    const popSound = document.getElementById('popSound');
+                    popSound.currentTime = 0;
+                    popSound.play();
+                    
+                    // Create pop effect
+                    balloon.style.transform = 'scale(1.5)';
+                    balloon.style.opacity = '0';
+                    
+                    // Remove balloon after animation
+                    setTimeout(() => {
+                        balloon.remove();
+                    }, 300);
+                });
+                
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+        
+        // Create Pepsu muscle photos in background
+        function createPepsuPhotos() {
+            const container = document.getElementById('pepsuPhotosContainer');
+            
+            // We'll use SVG placeholders for bodybuilder silhouettes
+            const bodybuilderSVGs = [
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,10 C40,10 35,20 35,30 C35,40 40,50 35,60 C30,70 20,65 20,80 C20,95 30,100 40,100 C45,100 45,110 50,120 C55,110 55,100 60,100 C70,100 80,95 80,80 C80,65 70,70 65,60 C60,50 65,40 65,30 C65,20 60,10 50,10 Z" fill="%23F5DEB3" stroke="%23000" stroke-width="2"/><circle cx="43" cy="30" r="3" fill="%23000"/><circle cx="57" cy="30" r="3" fill="%23000"/><path d="M43,45 C47,50 53,50 57,45" fill="none" stroke="%23000" stroke-width="2"/><path d="M30,50 C25,55 20,65 25,70 C30,75 35,65 37,60" fill="none" stroke="%23000" stroke-width="1"/><path d="M70,50 C75,55 80,65 75,70 C70,75 65,65 63,60" fill="none" stroke="%23000" stroke-width="1"/></svg>',
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50,10 C35,10 30,30 35,50 C25,60 15,70 20,90 C25,110 35,110 45,105 C45,120 48,130 50,140 C52,130 55,120 55,105 C65,110 75,110 80,90 C85,70 75,60 65,50 C70,30 65,10 50,10 Z" fill="%23F5DEB3" stroke="%23000" stroke-width="2"/><path d="M40,40 L35,35 M60,40 L65,35" stroke="%23000" stroke-width="1"/><path d="M40,50 C45,55 55,55 60,50" fill="none" stroke="%23000" stroke-width="1"/><path d="M25,65 C15,60 10,75 20,80 M75,65 C85,60 90,75 80,80" fill="none" stroke="%23000" stroke-width="1"/></svg>',
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M30,30 C25,35 20,45 25,60 C15,70 10,85 15,100 C20,115 30,115 40,105 C40,120 45,135 50,145 C55,135 60,120 60,105 C70,115 80,115 85,100 C90,85 85,70 75,60 C80,45 75,35 70,30 C60,20 40,20 30,30 Z" fill="%23F5DEB3" stroke="%23000" stroke-width="2"/><circle cx="40" cy="45" r="3" fill="%23000"/><circle cx="60" cy="45" r="3" fill="%23000"/><path d="M45,60 C48,65 52,65 55,60" fill="none" stroke="%23000" stroke-width="1"/><path d="M20,70 C15,65 10,80 15,85 M80,70 C85,65 90,80 85,85" fill="none" stroke="%23000" stroke-width="1"/></svg>'
+            ];
+            
+            for (let i = 0; i < 8; i++) {
+                const photo = document.createElement('div');
+                photo.classList.add('pepsu-photo');
+                
+                // Set random position and size
+                photo.style.setProperty('--rotation', `${Math.random() * 20 - 10}deg`);
+                photo.style.width = Math.floor(Math.random() * 100 + 100) + 'px';
+                photo.style.height = Math.floor(Math.random() * 100 + 150) + 'px';
+                photo.style.left = Math.random() * 80 + 10 + 'vw';
+                photo.style.top = Math.random() * 80 + 10 + 'vh';
+                
+                // Use silhouette image
+                photo.style.backgroundImage = `url(${bodybuilderSVGs[Math.floor(Math.random() * bodybuilderSVGs.length)]})`;
+                
+                container.appendChild(photo);
+            }
+        }
+        
+        // Setup cake throwing functionality
+        function setupCakeThrowing() {
+            const cakes = [
+                document.getElementById('cakeTopLeft'),
+                document.getElementById('cakeTopRight'),
+                document.getElementById('cakeBottomLeft'),
+                document.getElementById('cakeBottomRight')
+            ];
+            
+            const flyingCake = document.getElementById('flyingCake');
+            const cakeSplash = document.getElementById('cakeSplash');
+            const card = document.querySelector('.body');
+            const sadMusic = document.getElementById('sadMusic');
+            
+            cakes.forEach(cake => {
+                cake.addEventListener('click', function() {
+                    // Get positions
+                    const cakeRect = cake.getBoundingClientRect();
+                    const cardRect = card.getBoundingClientRect();
+                    
+                    // Hide the clicked cake
+                    cake.style.visibility = 'hidden';
+                    
+                    // Position the flying cake at the clicked cake's position
+                    flyingCake.style.left = cakeRect.left + 'px';
+                    flyingCake.style.top = cakeRect.top + 'px';
+                    flyingCake.style.opacity = '1';
+                    
+                    // Animate the cake flying to the card
+                    setTimeout(() => {
+                        flyingCake.style.transition = 'left 0.5s ease, top 0.5s ease, transform 0.5s ease';
+                        flyingCake.style.left = (cardRect.left + cardRect.width / 2 - 50) + 'px';
+                        flyingCake.style.top = (cardRect.top + cardRect.height / 2 - 40) + 'px';
+                        flyingCake.style.transform = 'rotate(180deg)';
+                    }, 50);
+                    
+                    // Show splash effect when cake hits card
+                    setTimeout(() => {
+                        flyingCake.style.opacity = '0';
+                        
+                        // Position and show splash
+                        cakeSplash.style.left = (cardRect.left + cardRect.width / 2 - 100) + 'px';
+                        cakeSplash.style.top = (cardRect.top + cardRect.height / 2 - 100) + 'px';
+                        cakeSplash.style.opacity = '1';
+                        cakeSplash.style.transform = 'scale(1)';
+                        
+                        // Play sad music
+                        sadMusic.currentTime = 0;
+                        sadMusic.play();
+                        
+                        // After sad music, play happy birthday
+                        setTimeout(() => {
+                            playHappyBirthdaySong();
+                        }, 2000);
+                    }, 550);
+                    
+                    // Hide splash after effect
+                    setTimeout(() => {
+                        cakeSplash.style.opacity = '0';
+                        cakeSplash.style.transform = 'scale(0)';
+                        
+                        // Reset flying cake for next use
+                        flyingCake.style.transition = 'none';
+                        flyingCake.style.transform = 'rotate(0)';
+                        
+                        // Make the cake visible again after some time
+                        setTimeout(() => {
+                            cake.style.visibility = 'visible';
+                        }, 5000);
+                    }, 3000);
+                });
+            });
+        }
+        
+        // Initialize everything when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createBodybuildingDecorations();
+            createBalloons();
+            createPepsuPhotos();
+            setupCakeThrowing();
+            
+            // Create new balloons periodically
+            setInterval(() => {
+                const balloonsContainer = document.getElementById('balloonsContainer');
+                if (balloonsContainer.children.length < 20) {
+                    createBalloons();
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
